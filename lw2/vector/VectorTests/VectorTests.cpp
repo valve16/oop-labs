@@ -1,6 +1,6 @@
 ﻿#define CATCH_CONFIG_MAIN
 #include <vector\Add.h>
-#include <..\catch2\catch.hpp>
+#include <..\..\catch2\catch.hpp>
 #include <vector>
 
 bool VectorsAreEqual(std::vector<double> const& x, std::vector<double> const& y)
