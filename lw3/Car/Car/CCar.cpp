@@ -31,7 +31,7 @@ bool Car::TurnOnEngine()
 
 bool Car::TurnOffEngine()
 {
-	if (!m_turnedOnEngine || (m_speed == 0 && m_gear == 0))
+	if (!m_turnedOnEngine || (m_speed == NULL_SPEED && m_gear == N_GEAR))
 	{
 		m_turnedOnEngine = false;
 		return true;
@@ -46,14 +46,13 @@ bool Car::SetGear(int gear)
 {
 	if (!m_turnedOnEngine)
 	{
-		if (gear == 0) 
+		if (gear == N_GEAR)
 		{
-			m_gear = 0;
+			m_gear = N_GEAR;
 			return true;
 		}
 		else 
 		{ 
-			std::cout << "Двигатель выключен, не удалось включить передачу\n";
 			return false;
 		}
 	}
@@ -61,91 +60,88 @@ bool Car::SetGear(int gear)
 	{
 		switch (gear)
 		{
-		case -1:
-			if (m_speed == 0)
+		case R_GEAR:
+			if (m_speed == NULL_SPEED)
 			{
-				m_gear = -1;
+				m_gear = R_GEAR;
 				return true;
 			};
 			break;
 
-		case 0:
-			m_gear = 0;
+		case N_GEAR:
+			m_gear = N_GEAR;
 			return true;
 
-		case 1:
-			if (m_speed >= 0 && m_speed <= 30 && m_direction != BACKWARD)
+		case FIRST_GEAR:
+			if (m_speed >= NULL_SPEED && m_speed <= LIMIT_FIRST_GEAR && m_direction != BACKWARD)
 			{
-				m_gear = 1;
+				m_gear = FIRST_GEAR;
 				return true;
 			};
 			break;
 
-		case 2:
-			if (m_speed >= 20 && m_speed <= 50 && m_direction == FORWARD)
+		case SECOND_GEAR:
+			if (m_speed >= MIN_SPEED_SECOND_GEAR && m_speed <= LIMIT_SECOND_GEAR && m_direction == FORWARD)
 			{
-				m_gear = 2;
+				m_gear = SECOND_GEAR;
 				return true;
 			};
 			break;
 
-		case 3:
-			if (m_speed >= 30 && m_speed <= 60 && m_direction == FORWARD)
+		case THIRD_GEAR:
+			if (m_speed >= MIN_SPEED_THIRD_GEAR && m_speed <= LIMIT_THIRD_GEAR && m_direction == FORWARD)
 			{
-				m_gear = 3;
+				m_gear = THIRD_GEAR;
 				return true;
 			};
 			break;
 
-		case 4:
-			if (m_speed >= 40 && m_speed <= 90 && m_direction == FORWARD)
+		case FOURTH_GEAR:
+			if (m_speed >= MIN_SPEED_FOURTH_GEAR && m_speed <= LIMIT_FOURTH_GEAR && m_direction == FORWARD)
 			{
-				m_gear = 4;
+				m_gear = FOURTH_GEAR;
 				return true;
 			};
 			break;
 
-		case 5:
-			if (m_speed >= 50 && m_speed <= 150 && m_direction == FORWARD)
+		case FIFTH_GEAR:
+			if (m_speed >= MIN_SPEED_FIFTH_GEAR && m_speed <= LIMIT_FIFTH_GEAR && m_direction == FORWARD)
 			{
-				m_gear = 5;
+				m_gear = FIFTH_GEAR;
 				return true;
 			};
 			break;
 
 		default:
-			std::cout << "Неверная передача, доступно от -1 до 5\n";
 			return false;
 		}
-		std::cout << "Скорость вне диапазона передачи";
 		return false;
 	}
 }
 
 bool Car::SetSpeed(int speed) 
 {
-	if (m_gear == 0) 
+	if (m_gear == NULL_SPEED)
 	{
 		if (speed < m_speed) 
 		{
 			m_speed = speed;
-			if (speed == 0)
+			if (speed == NULL_SPEED)
 			{
 				m_direction = STAND;
 			}
 			return true;
 		}
-		std::cout << "На нейтральной передаче можно только понизить скорость";
 	}
-	else if (speed >= 0) 
+	else if (speed >= NULL_SPEED)
 	{
 		switch (m_gear)
 		{
-		case -1: 
-			if (speed >= 0 && speed <= 20)
+		case R_GEAR:
+			if (speed >= NULL_SPEED && speed <= LIMIT_R_GEAR)
 			{
 				m_speed = speed;
-				if (speed == 0)
+				if (speed == NULL_SPEED)
 				{
 					m_direction = STAND;
 				}
@@ -157,11 +153,11 @@ bool Car::SetSpeed(int speed)
 			}
 			break;
 
-		case 1:
-			if (speed >= 0 && speed <= 30)
+		case FIRST_GEAR:
+			if (speed >= NULL_SPEED && speed <= LIMIT_FIRST_GEAR)
 			{
 				m_speed = speed;
-				if (speed == 0)
+				if (speed == NULL_SPEED)
 				{
 					m_direction = STAND;
 				}
@@ -173,39 +169,38 @@ bool Car::SetSpeed(int speed)
 			}
 			break;
 
-		case 2:
-			if (speed >= 20 && speed <= 50)
+		case SECOND_GEAR:
+			if (speed >= MIN_SPEED_SECOND_GEAR && speed <= LIMIT_SECOND_GEAR)
 			{
 				m_speed = speed;
 				return true;
 			}
 			break;
 
-		case 3: 
-			if (speed >= 30 && speed <= 60)
+		case THIRD_GEAR:
+			if (speed >= MIN_SPEED_THIRD_GEAR && speed <= LIMIT_THIRD_GEAR)
 			{
 				m_speed = speed;
 				return true;
 			}
 			break;
 
-		case 4:
-			if (speed >= 40 && speed <= 90)
+		case FOURTH_GEAR:
+			if (speed >= MIN_SPEED_FOURTH_GEAR && speed <= LIMIT_FOURTH_GEAR)
 			{
 				m_speed = speed;
 				return true;
 			}
 			break;
 
-		case 5:
-			if (speed >= 50 && speed <= 150)
+		case FIFTH_GEAR:
+			if (speed >= MIN_SPEED_FIFTH_GEAR && speed <= LIMIT_FIFTH_GEAR)
 			{
 				m_speed = speed;
 				return true;
 			}
 			break;
 		}
-		std::cout << "Скорость вне диапазона передачи";
 	}
 	return false;
 }
@@ -219,6 +214,7 @@ bool RemoteControl::ExecuteCommand() const
 	m_output << "EngineOff. Выключает двигатель " << std::endl;
 	m_output << "SetGear передача. " << std::endl;
 	m_output << "SetSpeed скорость. " << std::endl;
+	m_output << "Exit заввершить. " << std::endl;
 
 	while (std::getline(std::cin, command)) {
 		if (command == "TurnOn")
@@ -233,7 +229,7 @@ bool RemoteControl::ExecuteCommand() const
 
 		if (operation == "Info")
 		{
-			std::cout << "Engine: " << (m_car.IsTurnedOn() ? "On" : "Off") << std::endl;
+			m_output << "Engine: " << (m_car.IsTurnedOn() ? "On" : "Off") << std::endl;
 			std::string textDirection;
 			switch (m_car.GetDirection())
 			{
@@ -247,16 +243,16 @@ bool RemoteControl::ExecuteCommand() const
 				textDirection = "backward";
 				break;
 			}
-			std::cout << "Direction: " << textDirection << std::endl;
-			std::cout << "Gear: " << m_car.GetGear() << std::endl;
-			std::cout << "Speed: " << m_car.GetSpeed() << std::endl;
+			m_output << "Direction: " << textDirection << std::endl;
+			m_output << "Gear: " << m_car.GetGear() << std::endl;
+			m_output << "Speed: " << m_car.GetSpeed() << std::endl;
 		}
 
 		else if (operation == "EngineOn")
 		{
 			if (m_car.TurnOnEngine())
 			{
-				std::cout << "Двигатель включен" << std::endl;
+				m_output << "Двигатель включен\n" << std::endl;
 			}
 		}
 
@@ -264,26 +260,36 @@ bool RemoteControl::ExecuteCommand() const
 		{
 			if (!m_car.TurnOffEngine())
 			{
-				std::cout << "Двигатель не может быть в данный момент выключен\n";
+				m_output << "Двигатель не может быть в данный момент выключен\n";
 			}
 			else
 			{
-				std::cout << "Двигатель выключен\n";
+				m_output << "Двигатель выключен\n";
 			}
 		}
 		else if (operation == "SetGear")
 		{
 			if (m_car.SetGear(number))
 			{
-				std::cout << "Передача переключена\n";
+				m_output << "Передача переключена\n";
+			}
+			else
+			{
+				m_output << "Не удалось изменить передачу\n";
 			}
 		}
 		else if (operation == "SetSpeed") {
 			if (m_car.SetSpeed(number))
 			{
-				std::cout << "Скорость изменена\n";
+				m_output << "Скорость изменена\n";
+			}
+			else
+			{
+				m_output << "Не удалось изменить скорость\n";
 			}
 		}
+		else if (operation == "Exit") {
+			return true;
+		}
 	}
-	return true;
 }
