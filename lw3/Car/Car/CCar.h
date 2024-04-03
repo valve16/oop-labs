@@ -17,6 +17,7 @@ public:
 	bool TurnOnEngine();
 	bool TurnOffEngine();
 	bool SetGear(int gear);
+	bool SetSpeed(int speed);
 private:
 	int m_gear = 0;
 	int m_speed = 0;

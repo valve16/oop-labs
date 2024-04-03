@@ -73,7 +73,10 @@ int main()
 			}
 		}
 		else if (operation == "SetSpeed") {
-
+			if (car.SetSpeed(number))
+			{
+				std::cout << "Скорость изменена\n";
+			}
 		}
 	}
 }
