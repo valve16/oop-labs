@@ -11,13 +11,11 @@ int main()
 	SetConsoleOutputCP(1251);
 
 	Car car;
-	std::cout << "Info. Выводит состояние двигателя автомобиля, направление движения, скорость и передачу " << std::endl;
-	std::cout << "EngineOn. Включает двигатель" << std::endl;
-	std::cout << "EngineOff. Выключает двигатель " << std::endl;
-	std::cout << "SetGear передача. " << std::endl;
-	std::cout << "SetSpeed скорость. " << std::endl;
 
-	std::string line;
+	RemoteControl remoteControl{ car, std::cin, std::cout };
+	remoteControl.ExecuteCommand();
+
+	/*std::string line;
 	while (std::getline(std::cin, line))
 	{
 		std::istringstream iss(line);
@@ -78,6 +76,6 @@ int main()
 				std::cout << "Скорость изменена\n";
 			}
 		}
-	}
+	}*/
 }
 
