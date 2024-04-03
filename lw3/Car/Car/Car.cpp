@@ -24,6 +24,7 @@ int main()
 		std::string operation;
 		int number;
 		iss >> operation >> number;
+
 		if (operation == "Info")
 		{
 			std::cout << "Engine: " << (car.IsTurnedOn() ? "On" : "Off") << std::endl;
@@ -44,6 +45,7 @@ int main()
 			std::cout << "Gear: " << car.GetGear() << std::endl;
 			std::cout << "Speed: " << car.GetSpeed() << std::endl;
 		}
+
 		else if (operation == "EngineOn")
 		{
 			if (car.TurnOnEngine())
@@ -51,6 +53,7 @@ int main()
 				std::cout << "Двигатель включен" << std::endl;
 			}
 		}
+
 		else if (operation == "EngineOff")
 		{
 			if (!car.TurnOffEngine())
@@ -64,7 +67,10 @@ int main()
 		}
 		else if (operation == "SetGear")
 		{
-			std::cout << operation << " " << number << std::endl;
+			if (car.SetGear(number)) 
+			{
+				std::cout << "Передача переключена\n";
+			}
 		}
 		else if (operation == "SetSpeed") {
 

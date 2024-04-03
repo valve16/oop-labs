@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 enum Direction 
 {
 	STAND,
@@ -15,6 +16,7 @@ public:
 	int GetGear() const;
 	bool TurnOnEngine();
 	bool TurnOffEngine();
+	bool SetGear(int gear);
 private:
 	int m_gear = 0;
 	int m_speed = 0;
