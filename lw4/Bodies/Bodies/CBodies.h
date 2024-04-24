@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <vector>
 
 class CBody
 {
@@ -10,9 +11,7 @@ public:
 	virtual double GetVolume() const = 0;
 	virtual double GetMass() const = 0;
 	virtual double GetDensity() const = 0;
-	std::string ToString();
-private:
-
+	//std::string ToString();
 };
 
 class CSolidBody : public CBody 
@@ -23,7 +22,6 @@ public:
 	CSolidBody(double density) : m_density(density) {}
 	double GetMass() const override;
 	double GetDensity() const override;
-	//virtual double GetVolume() const override;
 };
 
 class CSphere : public CSolidBody 
@@ -31,7 +29,6 @@ class CSphere : public CSolidBody
 public:
 	CSphere(double radius, double density) : CSolidBody(density), m_radius(radius) {}
 	double GetVolume() const override;
-	//double GetMass() const override;
 	double GetRadius() const;
 private:
 	double m_radius;
@@ -43,7 +40,6 @@ public:
 	CParallelepiped(double length, double width, double height, double density) :
 		CSolidBody(density), m_depth(length), m_width(width), m_height(height) {}
 	double GetVolume() const override;
-	//double GetMass() const override;
 	double GetDepth() const;
 	double GetWidth() const;
 	double GetHeight() const;
@@ -56,7 +52,6 @@ class CCone : public CSolidBody
 public:
 	CCone(double radius, double density, double height) : CSolidBody(density), m_baseRadius(radius), m_height(height) {}
 	double GetVolume() const override;
-	//double GetMass() const override;
 	double GetBaseRadius() const;
 	double GetHeight() const;
 private:
@@ -72,4 +67,30 @@ public:
 	double GetHeight() const;
 private:
 	double m_radius, m_height;
+};
+
+class CCompound : public CBody 
+{
+public:
+	CCompound() = default;
+	bool AddChildBody(std::shared_ptr<CBody> child);
+	double GetVolume() const override;
+	double GetMass() const override;
+	double GetDensity() const override;
+private:
+	std::vector<std::shared_ptr<CBody>> m_childs = {};
+};
+
+class RemoteControl
+{
+public:
+	RemoteControl(std::istream& input, std::ostream& output)
+		: m_input{ input }
+		, m_output{ output }
+	{
+	}
+	bool ExecuteCommand() const;
+private:
+	std::istream& m_input;
+	std::ostream& m_output;
 };
