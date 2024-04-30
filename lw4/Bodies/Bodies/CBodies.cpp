@@ -1,125 +1,37 @@
-#include "CBodies.h"
-const double PI = 3.141592;
+#include <vector>
+#include <iomanip> 
+#include <math.h>
+#define _USE_MATH_DEFINES
+#include "Bodies.h"
 const double GAIN = 9.8;
 
 
-double CSolidBody::GetDensity() const
+CBody::CBody(const std::string& type, double density)
+	: m_density(density)
+	, m_type(type)
+{
+}
+
+double CBody::GetDensity()const
 {
 	return m_density;
 }
 
-double CSolidBody::GetMass() const
+double CBody::GetMass()const
 {
-	return m_density * GetVolume();
+	return GetVolume() * GetDensity();
 }
 
 
-double CSphere::GetVolume() const
+std::string CBody::ToString()const
 {
-	return (4.0 / 3.0) * PI * pow(m_radius, 3);
-}
-
-//double CSphere::GetMass() const 
-//{
-//	return m_density * GetVolume();
-//}
-
-double CSphere::GetRadius() const 
-{
-	return m_radius;
-}
-
-double CParallelepiped::GetVolume() const 
-{
-	return m_depth * m_width * m_height;
-}
-
-//double CParallelepiped::GetMass() const 
-//{
-//	return GetVolume() * m_density;
-//}
-
-double CParallelepiped::GetWidth() const 
-{
-	return m_width;
-}
-
-double CParallelepiped::GetDepth() const 
-{
-	return m_depth;
-}
-
-double CParallelepiped::GetHeight() const 
-{
-	return m_height;
-}
-
-double CCone::GetHeight() const 
-{
-	return m_height;
-}
-
-double CCone::GetBaseRadius() const 
-{
-	return m_baseRadius;
-}
-
-double CCone::GetVolume() const 
-{
-	return 1/3 * PI * pow(m_baseRadius, 2) * m_height;
-}
-
-double CCylinder::GetHeight() const
-{
-	return m_height;
-}
-
-double CCylinder::GetRadius() const
-{
-	return m_radius;
-}
-
-double CCylinder::GetVolume() const
-{
-	return PI * pow(m_radius, 2) * m_height;
-}
-
-bool CCompound::AddChildBody(std::shared_ptr<CBody> child) {
-	m_childs.push_back(child);
-	return true;
-}
-
-double CCompound::GetVolume() const 
-{
-	double totalVolume = 0;
-	for (const auto& child : m_childs) {
-		totalVolume += child->GetVolume();
-	}
-	return totalVolume;
-}
-
-double CCompound::GetMass() const 
-{
-	double totalMass = 0;
-	for (const auto& part : m_childs) 
-	{
-		totalMass += part->GetMass();
-	}
-	return totalMass;
-}
-
-double CCompound::GetDensity() const 
-{
-	double totalMass = 0;
-	for (const auto& part : m_childs)
-	{
-		totalMass += part->GetMass();
-	};
-	double totalVolume = 0;
-	for (const auto& child : m_childs) {
-		totalVolume += child->GetVolume();
-	};
-	return totalMass / totalVolume;
+	std::ostringstream strm;
+	strm << m_type << ":" << std::endl << std::setprecision(10)
+		<< "\tdensity = " << GetDensity() << std::endl
+		<< "\tvolume = " << GetVolume() << std::endl
+		<< "\tmass = " << GetMass() << std::endl;
+	AppendProperties(strm);
+	return strm.str();
 }
 
 //bool RemoteControl::ExecuteCommand() const

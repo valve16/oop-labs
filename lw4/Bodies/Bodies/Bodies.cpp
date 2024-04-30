@@ -1,5 +1,5 @@
 ﻿#include <iostream>
-#include "CBodies.h"
+#include "Sphere.h"
 
 int main()
 {
@@ -11,12 +11,13 @@ int main()
     std::cout << "Mass: " << sphere.GetMass() << "\n";
     std::cout << "Density:  " << sphere.GetDensity() << "\n";
     std::cout << "Volume: " << sphere.GetVolume() << "\n";
+    std::cout << sphere.ToString();
 
-    CCompound bodies1;
+   /* CCompound bodies1;
     bodies1.AddChildBody(std::make_shared<CSphere> (sphere));
     bodies1.AddChildBody(std::make_shared<CSphere>(sphere1));
-    std::cout << "Mass: " << bodies1.GetMass() << "\n";
-    std::cout << "Density:  " << bodies1.GetDensity() << "\n";
-    std::cout << "Volume: " << bodies1.GetVolume() << "\n";
+    std::cout << "mass: " << bodies1.GetMass() << "\n";
+    std::cout << "density:  " << bodies1.GetDensity() << "\n";
+    std::cout << "volume: " << bodies1.GetVolume() << "\n";*/
 }
 
