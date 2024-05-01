@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -23,16 +24,16 @@ private:
 };
 
 
-class RemoteControl
-{
-public:
-	RemoteControl(std::istream& input, std::ostream& output)
-		: m_input{ input }
-		, m_output{ output }
-	{
-	}
-	bool ExecuteCommand() const;
-private:
-	std::istream& m_input;
-	std::ostream& m_output;
-};
+//class RemoteControl
+//{
+//public:
+//	RemoteControl(std::istream& input, std::ostream& output)
+//		: m_input{ input }
+//		, m_output{ output }
+//	{
+//	}
+//	bool ExecuteCommand() const;
+//private:
+//	std::istream& m_input;
+//	std::ostream& m_output;
+//};

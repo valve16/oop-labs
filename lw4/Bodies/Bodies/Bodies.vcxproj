@@ -128,20 +128,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bodies.cpp" />
+    <ClCompile Include="BodyControl.cpp" />
     <ClCompile Include="CBodies.cpp" />
     <ClCompile Include="Compound\Compound.cpp" />
     <ClCompile Include="Cone\Cone.cpp" />
     <ClCompile Include="Cylinder\Cylinder.cpp" />
     <ClCompile Include="Parallelepiped\Parallelepiped.cpp" />
-    <ClCompile Include="Sphere.cpp" />
+    <ClCompile Include="Sphere\Sphere.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Bodies.h" />
+    <ClInclude Include="BodyControl.h" />
+    <ClInclude Include="СBodies.h" />
     <ClInclude Include="Compound\Compound.h" />
     <ClInclude Include="Cone\Cone.h" />
     <ClInclude Include="Cylinder\Cylinder.h" />
     <ClInclude Include="Parallelepiped\Parallelepiped.h" />
-    <ClInclude Include="Sphere.h" />
+    <ClInclude Include="Sphere\Sphere.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

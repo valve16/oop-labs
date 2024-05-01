@@ -2,7 +2,7 @@
 
 
 
-CParallelepiped::CParallelepiped(double length, double width, double height, double density) 
+CParallelepiped::CParallelepiped(double density, double length, double width, double height)
 	: CBody("Parallelepiped",density)
 	, m_depth(length)
 	, m_width(width)

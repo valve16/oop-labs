@@ -1,7 +1,7 @@
 #define _USE_MATH_DEFINES
 #include "Cylinder.h"
 
-CCylinder::CCylinder(double radius, double density, double height)
+CCylinder::CCylinder(double density, double radius, double height)
 	: CBody("Cylinder", density)
 	, m_height(height)
 	, m_radius(radius)

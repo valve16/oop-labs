@@ -1,5 +1,4 @@
-#pragma once
-#include"..\Bodies.h"
+#include"..\ÑBodies.h"
 
 class CCylinder final: public CBody
 {

@@ -1,5 +1,4 @@
-#pragma once
-#include "../Bodies.h"
+#include "../ÑBodies.h"
 
 class CParallelepiped final : public CBody
 {

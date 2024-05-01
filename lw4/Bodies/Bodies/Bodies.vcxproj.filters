@@ -21,9 +21,6 @@
     <ClCompile Include="CBodies.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Sphere.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="Cone\Cone.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -36,12 +33,15 @@
     <ClCompile Include="Compound\Compound.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Sphere\Sphere.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="BodyControl.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Bodies.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Sphere.h">
+    <ClInclude Include="СBodies.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Cone\Cone.h">
@@ -54,6 +54,12 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Compound\Compound.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Sphere\Sphere.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="BodyControl.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
