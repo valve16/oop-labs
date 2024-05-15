@@ -34,6 +34,8 @@ public:
     CRational operator-=(const CRational& num);
     CRational operator*=(const CRational& num);
     CRational operator/=(const CRational& num);
+
+    std::pair<int, CRational> ToCompoundFraction()const;
     //static int GCD(int a, int b);
    // static int LCM(int a, int b);
 private:

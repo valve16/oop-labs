@@ -178,3 +178,15 @@ std::ostream& operator<<(std::ostream& os, const CRational& rational) {
     os << rational.GetNumerator() << SLASH << rational.GetDenominator();
     return os;
 }
+ 
+std::pair<int, CRational> CRational::ToCompoundFraction()const
+{
+    int wholePart = m_num / m_denom; 
+    int remNum = m_num;
+    if (m_num < 0)
+    {
+        remNum = -m_num;
+    }
+    CRational remainder = CRational(remNum % m_denom, m_denom);
+    return std::make_pair(wholePart, remainder);
+}
