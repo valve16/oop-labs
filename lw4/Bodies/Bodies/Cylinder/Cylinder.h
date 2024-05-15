@@ -1,9 +1,9 @@
-#include"..\ÑBodies.h"
+#include"..\ÑBody.h"
 
 class CCylinder final: public CBody
 {
 public:
-	CCylinder(double radius, double density, double height);
+	CCylinder(double density, double radius, double height);
 	double GetVolume() const override;
 	double GetRadius() const;
 	double GetHeight() const;

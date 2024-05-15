@@ -1,4 +1,4 @@
-#include "../ÑBodies.h"
+#include "../ÑBody.h"
 
 
 class CSphere final : public CBody

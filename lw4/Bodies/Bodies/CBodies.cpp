@@ -2,7 +2,7 @@
 #include <iomanip> 
 #include <math.h>
 #define _USE_MATH_DEFINES
-#include "ÑBodies.h"
+#include "ÑBody.h"
 const double GAIN = 9.8;
 
 

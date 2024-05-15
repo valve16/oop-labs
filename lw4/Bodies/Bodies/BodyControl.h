@@ -1,6 +1,6 @@
 #pragma once
 
-#include "СBodies.h"
+#include "СBody.h"
 #include <vector>
 
 class CBodyControl
@@ -10,7 +10,7 @@ public:
 		, std::istream& input
 		, std::ostream& output);
 	void ReadBodies();
-	void WriteBodies();
+	void WriteBodies() const; // принимать потоки 
 	void WriteHaviestBody() const;
 	void WriteLightestBodyInWater() const;
 private:

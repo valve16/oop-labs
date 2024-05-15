@@ -1,9 +1,15 @@
+#include <algorithm>
 #include "BodyControl.h"
 #include "Sphere/Sphere.h"
 #include "Cone/Cone.h"
 #include "Cylinder/Cylinder.h"
 #include "Parallelepiped/Parallelepiped.h"
 
+
+const std::string SPHERE_STR = "sphere";
+const std::string PARALLELEPIPED_STR = "parallelepiped";
+const std::string CONE_STR = "cone";
+const std::string CYLINDER_STR = "cylinder";
 const double WATER_DENSITY = 1000.0;
 
 CBodyControl::CBodyControl(std::vector<std::shared_ptr<CBody>>& bodies
@@ -30,7 +36,7 @@ void CBodyControl::ReadBodies()
         };
 }
 
-void CBodyControl::WriteBodies()
+void CBodyControl::WriteBodies() const
 {
     m_output << "Information about bodies:" << std::endl;
     for (const auto& body : m_bodies)
@@ -48,34 +54,34 @@ void CBodyControl::WriteBodies()
     m_output << "Enter the type of body (sphere, parallelepiped, cone, cylinder): ";
     m_input >> type;
 
-    if (type == "sphere" || type == "parallelepiped" || type == "cone" || type == "cylinder")
+    if (type == SPHERE_STR || type == PARALLELEPIPED_STR || type == CONE_STR || type == CYLINDER_STR)
     {
         double density;
         m_output << "Enter the density: ";
         m_input >> density;
 
-        if (type == "sphere")
+        if (type == SPHERE_STR)// через map и getline
         {
             double radius;
             m_output << "Enter the radius of the sphere: ";
             m_input >> radius;
             return std::make_shared<CSphere>(density, radius);
         }
-        else if (type == "parallelepiped")
+        else if (type == PARALLELEPIPED_STR)
         {
             double length, width, height;
             m_output << "Enter the length, width, and height of the parallelepiped: ";
             m_input >> length >> width >> height;
             return std::make_shared<CParallelepiped>(density, length, width, height);
         }
-        else if (type == "cone")
+        else if (type == CONE_STR)
         {
             double radius, height;
             m_output << "Enter the radius and height of the cone: ";
             m_input >> radius >> height;
             return std::make_shared<CCone>(density, radius, height);
         }
-        else if (type == "cylinder")
+        else if (type == CYLINDER_STR)
         {
             double radius, height;
             m_output << "Enter the radius and height of the cone: ";
@@ -127,7 +133,8 @@ void CBodyControl::WriteLightestBodyInWater() const
     {
         m_output << "Lightes body in water: " << lightestInWaterBody->ToString() << std::endl;
     }
-    else {
+    else
+    {
         m_output << "No bodies found." << std::endl;
     }
 }

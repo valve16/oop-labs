@@ -1,9 +1,9 @@
-#include "../ÑBodies.h"
+#include "../ÑBody.h"
 
 class CParallelepiped final : public CBody
 {
 public:
-	CParallelepiped(double length, double width, double height, double density);
+	CParallelepiped(double density, double length, double width, double height);
 	double GetVolume() const override;
 	double GetDepth() const;
 	double GetWidth() const;
