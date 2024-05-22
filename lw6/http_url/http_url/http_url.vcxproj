@@ -130,10 +130,12 @@
     <ClCompile Include="CHttpUrl.cpp" />
     <ClCompile Include="CUrlParsingError.cpp" />
     <ClCompile Include="http_url.cpp" />
+    <ClCompile Include="UrlHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CHttpUrl.h" />
     <ClInclude Include="CUrlParsingError.h" />
+    <ClInclude Include="UrlHandler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -24,12 +24,18 @@
     <ClCompile Include="CUrlParsingError.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="UrlHandler.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CHttpUrl.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="CUrlParsingError.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="UrlHandler.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
