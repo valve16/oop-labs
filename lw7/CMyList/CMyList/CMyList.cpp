@@ -20,7 +20,13 @@ CMyList<T>::CMyList(const CMyList& list)
 	, m_tail(nullptr)
 	, m_size(0)
 {
-	CopyFrom(list);
+	try {
+		CopyFrom(list);
+	}
+	catch (...) {
+		Clear();
+		throw;
+	}
 };
 
 template<typename T>
@@ -32,15 +38,17 @@ CMyList<T>::CMyList(CMyList&& list) noexcept
 	list.m_head = nullptr;
 	list.m_tail = nullptr;
 	list.m_size = 0;
+
 }
 
 template<typename T>
 CMyList<T>& CMyList<T>::operator=(const CMyList& list)
 {
-	if (this != &list)
-	{
-		Clear();
-		CopyFrom(list);
+	if (this != &list) {
+		CMyList temp(list);
+		std::swap(m_head, temp.m_head);
+		std::swap(m_tail, temp.m_tail);
+		std::swap(m_size, temp.m_size);
 	}
 	return *this;
 }
@@ -221,7 +229,7 @@ typename CMyList<T>::CIt CMyList<T>::begin()
 template<typename T>
 typename CMyList<T>::CIt CMyList<T>::end()
 {
-	return CIt(m_tail->next);
+	return CIt(nullptr);
 }
 
 // CRevIt methods
@@ -282,7 +290,7 @@ typename CMyList<T>::CRevIt CMyList<T>::rbegin()
 template<typename T>
 typename CMyList<T>::CRevIt CMyList<T>::rend()
 {
-	return CRevIt(m_head->prev);
+	return CRevIt(nullptr);
 }
 
 template<typename T>

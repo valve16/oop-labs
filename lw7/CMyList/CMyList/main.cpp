@@ -12,6 +12,7 @@ int main()
     intList.insert(it, 3);
 
     std::cout << "Integer list elements: ";
+    //intList.Clear();
     for (auto it = intList.begin(); it != intList.end(); ++it) {
         std::cout << *it << " ";
     }

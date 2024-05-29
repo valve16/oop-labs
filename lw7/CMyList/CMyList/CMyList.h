@@ -40,8 +40,6 @@ public:
     private:
         Node* m_current;
     public:
-        using iterator_category = std::bidirectional_iterator_tag;
-        using difference_type = std::ptrdiff_t;
         using value_type = T;
         using pointer = T*;
         using reference = T&;
@@ -70,8 +68,6 @@ public:
     private:
         Node* m_current;
     public:
-        using iterator_category = std::bidirectional_iterator_tag;
-        using difference_type = std::ptrdiff_t;
         using value_type = T;
         using pointer = T*;
         using reference = T&;
@@ -101,13 +97,13 @@ public:
     CIt insert(CIt pos, T&& value);
 
     CIt erase(CIt pos);
+    void Clear() noexcept;
 private:
     Node* m_head;
     Node* m_tail;
     size_t m_size;
 
     void CopyFrom(const CMyList& list);
-    void Clear() noexcept;
 };
 
 #include "CMyList.cpp"
