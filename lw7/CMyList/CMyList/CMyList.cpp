@@ -4,7 +4,3 @@
 #include <utility>
 #include "CMyList.h"
 
-struct CMyList::Node
-{
-
-};
